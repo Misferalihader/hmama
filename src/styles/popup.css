@@ -1,0 +1,247 @@
+/* Popup Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(30,30,60,0.18);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-box {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 8px 40px 0 rgba(105, 94, 247, 0.18);
+  padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+  max-width: 340px;
+  width: 95vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.popup-title {
+  font-family: 'Cairo', 'Inter', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #695EF7;
+  margin-bottom: 0.7rem;
+}
+
+.popup-desc {
+  color: #222;
+  font-size: 1.05rem;
+  margin-bottom: 1.2rem;
+  font-family: 'Cairo', 'Inter', sans-serif;
+}
+
+.popup-terms-label {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 0.6rem;
+  font-size: 1.08rem;
+  color: #695EF7;
+  font-family: 'Cairo', 'Inter', sans-serif;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+.popup-terms-label input[type="checkbox"] {
+  accent-color: #695EF7;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.popup-error {
+  color: #B360F4;
+  font-size: 0.98rem;
+  margin-bottom: 0.7rem;
+  text-align: right;
+  width: 100%;
+}
+
+.popup-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.2rem;
+}
+.popup-cancel {
+  background: #F6F5F1;
+  color: #695EF7;
+  border: none;
+  border-radius: 12px;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  font-family: 'Cairo', 'Inter', sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.popup-cancel:hover {
+  background: #e0e0f7;
+}
+.popup-confirm {
+  background: #695EF7;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  font-family: 'Cairo', 'Inter', sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.popup-confirm:hover {
+  background: #4e47b6;
+}
+
+/* --- Figma Popup Customization --- */
+.figma-popup-box {
+  background: #D0EEF9;
+  border-radius: 24px;
+  box-shadow: 0 8px 40px 0 rgba(105, 94, 247, 0.18);
+  padding: 2.5rem 1.7rem 1.7rem 1.7rem;
+  max-width: 370px;
+  width: 95vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1.5px solid #F5F4FF;
+}
+
+.popup-svg-icon {
+  margin-bottom: 1.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.figma-popup-title {
+  font-family: 'Cairo', 'Inter', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #695EF7;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.5px;
+}
+
+.figma-popup-desc {
+  color: #695EF7 !important;
+  font-size: 0.95rem;
+  margin-bottom: 1.1rem;
+  font-family: 'Cairo', 'Inter', sans-serif;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+.figma-popup-terms-label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 0.5rem;
+  font-size: 1.08rem;
+  color: #695EF7;
+  font-family: 'Cairo', 'Inter', sans-serif;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  cursor: pointer;
+  user-select: none;
+}
+.figma-popup-terms-label input[type="checkbox"] {
+  opacity: 0;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+.figma-custom-checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #695EF7;
+  background: transparent;
+  display: inline-block;
+  position: relative;
+  margin-left: 0.2rem;
+  transition: border 0.2s;
+  z-index: 1;
+  vertical-align: middle;
+}
+.figma-popup-terms-label input[type="checkbox"]:checked + .figma-custom-checkbox {
+  background: #695EF7;
+  border-color: #695EF7;
+}
+.figma-popup-terms-label input[type="checkbox"]:checked + .figma-custom-checkbox:after {
+  content: '';
+  display: none;
+}
+
+.figma-popup-error {
+  color: #B360F4 !important;
+  font-size: 0.98rem;
+  margin-bottom: 0.7rem;
+  text-align: center;
+  width: 100%;
+  font-family: 'Cairo', 'Inter', sans-serif;
+}
+
+.figma-popup-actions {
+  display: flex;
+  gap: 0.7rem;
+  justify-content: center;
+  margin-top: 1.1rem;
+  width: 100%;
+}
+.figma-popup-cancel {
+  background: transparent;
+  color: #695EF7;
+  border: none;
+  border-radius: 12px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.05rem;
+  font-family: 'Cairo', 'Inter', sans-serif;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: none;
+}
+.figma-popup-cancel:hover {
+  background: #ecebfa;
+}
+.figma-popup-confirm {
+  background: #695EF7;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.05rem;
+  font-family: 'Cairo', 'Inter', sans-serif;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(105, 94, 247, 0.13);
+}
+.figma-popup-confirm:hover {
+  background: #4e47b6;
+}
+.figma-popup-cancel:focus,
+.figma-popup-confirm:focus {
+  outline: none;
+  box-shadow: none;
+}

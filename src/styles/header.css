@@ -1,0 +1,187 @@
+/* تصميم هيدر حمامة بناءً على Figma */
+.hmama-header {
+  background: #695EF7;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  min-height: 64px;
+  box-shadow: none;
+}
+
+.header-content {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 1.2rem;
+  height: 64px;
+  direction: ltr;
+}
+
+.hmama-logo {
+  width: 100px;
+  min-width: 100px;
+  max-width: 100px;
+  height: auto;
+  object-fit: contain;
+  margin-left: 0.7rem;
+  margin-right: 0;
+}
+
+.burger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 120;
+  margin-right: 0.7rem;
+}
+.burger-bar {
+  width: 26px;
+  height: 3px;
+  background: #fff;
+  margin: 3px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+.header-spacer {
+  flex: 1;
+  order: 0;
+}
+
+/* القائمة الجانبية */
+.mobile-menu-overlay {
+  display: none;
+}
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -260px;
+  width: 240px;
+  height: 100vh;
+  background: #695EF7; /* اللون الأساسي */
+  box-shadow: -2px 0 16px rgba(105,94,247,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  transition: right 0.3s;
+  z-index: 200;
+}
+.mobile-menu.open {
+  right: 0;
+}
+.mobile-menu a, .mobile-menu .close-menu {
+  color: #fff;
+}
+.close-menu {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #fff;
+  align-self: flex-end;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  padding: 0.7rem;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: none;
+  width: 2.8rem;
+  height: 2.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.close-menu:hover {
+  background: rgba(255,255,255,0.10);
+  color: #B360F4;
+}
+.mobile-menu-overlay.open {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.18);
+  z-index: 150;
+}
+
+body, html {
+  background: #695EF7 !important;
+}
+
+/* حجم الشعار */
+.hmama-logo {
+  width: 100px;
+  min-width: 100px;
+  max-width: 100px;
+  height: auto;
+  object-fit: contain;
+  margin-left: 0.7rem;
+  margin-right: 0;
+}
+@media (max-width: 700px) {
+  .hmama-logo {
+    width: 80px;
+    min-width: 8px;
+    max-width: 80px;
+    height: auto;
+    margin-left: 0.5rem;
+  }
+  .burger-menu {
+    margin-right: 0.5rem;
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .header-content {
+    padding: 0.5rem 0.7rem;
+  }
+}
+@media (max-width: 700px) {
+  .desktop-nav {
+    display: none;
+  }
+  .burger-menu {
+    display: flex;
+  }
+  .hmama-title {
+    font-size: 1.1rem;
+    margin: 0 0.5rem 0 0;
+  }
+}
+
+.burger-menu,
+.close-menu {
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+.burger-menu:hover,
+.close-menu:hover {
+  background: rgba(255,255,255,0.08);
+  color: #B360F4;
+}
+.burger-menu:focus,
+.close-menu:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* إذا كان هناك أزرار أخرى لاحقاً */
+button:hover {
+  filter: brightness(1.1);
+}
