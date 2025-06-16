@@ -40,7 +40,7 @@
 }
 
 .form-textarea, .form-input {
-  border: 1px solid #B360F4;
+  border: 1px solid #ffffff;
   border-radius: 16px;
   background: transparent;
   box-sizing: border-box;
@@ -207,7 +207,7 @@
   cursor: not-allowed;
 }
 .form-submit:hover:enabled {
-  background: #695EF7;
+  background: #a850eb;
 }
 
 .form-note {

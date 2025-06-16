@@ -17,7 +17,7 @@ function Header() {
   const handleCloseMenu = () => setMenuOpen(false);
 
   return (
-    <header className={`hmama-header${scrolled ? ' header-shadow' : ''}`}>
+    <header className={`hmama-header${scrolled ? ' scrolled' : ''}`}>
       <div className="header-content">
         <img src="/assets/hmama-logo.svg" alt="Hmama Logo" className="hmama-logo" />
         <div className="header-spacer" />
