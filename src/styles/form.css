@@ -7,6 +7,7 @@
   margin-top: 1.5rem;
   margin-bottom: 2.5rem;
   background: none;
+  margin:  0 auto;
 }
 
 .message-form {
@@ -219,9 +220,115 @@
   font-weight: 300;
 }
 
-@media (max-width: 700px) {
-  .message-form {
-    padding: 1.2rem 0.5rem 1rem 0.5rem;
-    max-width: 98vw;
+/* Add margins to message form section */
+.form-container {
+  margin: 0 20px;
+}
+
+@media (max-width: 768px) {
+  .form-container {
+    margin: 0 15px;
   }
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    margin: 0 10px;
+  }
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .message-form {
+    padding: 1.5rem 1rem;
+    max-width: 90vw;
+  }
+
+  .form-label {
+    font-size: 1rem;
+  }
+
+  .form-textarea, .form-input {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .form-submit {
+    font-size: 1rem;
+    padding: 0.8rem 0;
+  }
+
+  .form-note {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .message-form {
+    padding: 1rem;
+    max-width: 95vw;
+  }
+
+  .form-label {
+    font-size: 0.9rem;
+  }
+
+  .form-textarea, .form-input {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .form-submit {
+    font-size: 0.9rem;
+    padding: 0.7rem 0;
+  }
+
+  .form-note {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .message-form {
+    max-width: 650px;
+    padding: 2.5rem 2.5rem 2rem 2.5rem;
+    font-size: 1.18rem;
+  }
+  .form-label {
+    font-size: 1.18rem;
+  }
+  .form-textarea, .form-input {
+    font-size: 1.18rem;
+    padding: 1.3rem 1.2rem;
+  }
+  .form-submit {
+    font-size: 1.18rem;
+    padding: 1.2rem 0;
+  }
+  .form-note {
+    font-size: 1.08rem;
+  }
+}
+
+/* حركة طيران الحمامة */
+.flying-dove {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 1.2s cubic-bezier(0.4,1,0.7,1);
+}
+.flying-dove.fly {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-180px) scale(1.2) rotate(-18deg);
+}
+
+/* حركة طيران الحمامة في مربع التنبيه */
+.flying-dove-popup.show {
+  opacity: 1 ;
+  animation: doveFlyPopup 1.5s cubic-bezier(0.4,1,0.7,1);
+}
+@keyframes doveFlyPopup {
+  0% { opacity: 0; transform: translate(-50%, 0) scale(1) rotate(0deg); }
+  20% { opacity: 1; }
+  80% { opacity: 1; transform: translate(-50%, -120px) scale(1.2) rotate(-18deg); }
+  100% { opacity: 0; transform: translate(-50%, -180px) scale(1.3) rotate(-24deg); }
 }

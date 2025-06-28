@@ -14,7 +14,7 @@
 }
 
 .footer-logo img {
-  width: 120px;
+  width: 90px;
   height: auto;
 }
 
@@ -56,4 +56,47 @@
   margin-top: 1.5rem;
   font-size: 0.9rem;
   color: #F6F5F1;
+}
+
+/* Add margins to footer section */
+footer {
+  margin: 0 20px;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  footer {
+    margin: 0 15px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links a {
+    font-size: 14px;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  footer {
+    margin: 0 10px;
+    padding: 10px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+  }
+
+  .social-icons img {
+    width: 24px;
+    height: 24px;
+  }
 }

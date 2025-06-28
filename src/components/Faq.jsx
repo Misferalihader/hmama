@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import '../styles/faq.css';
+
 function Faq() {
   const faqs = [
     { question: 'ما هي خدمة حمامة؟', answer: 'هذا نص تجريبي هذا نص تجريبي.' },

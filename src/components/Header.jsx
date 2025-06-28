@@ -13,15 +13,24 @@ function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // ✅ منع التمرير عند فتح القائمة الجانبية
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+    return () => document.body.classList.remove('no-scroll');
+  }, [menuOpen]);
+
   const handleMenuToggle = () => setMenuOpen((open) => !open);
   const handleCloseMenu = () => setMenuOpen(false);
 
   return (
     <header className={`hmama-header${scrolled ? ' scrolled' : ''}`}>
       <div className="header-content">
-        <img src="/assets/hmama-logo.svg" alt="Hmama Logo" className="hmama-logo" />
+        <img src="./assets/hmama-logo.svg" alt="Hmama Logo" className="hmama-logo" />
         <div className="header-spacer" />
-        {/* زر البرقر منيو يظهر فقط إذا القائمة الجانبية مغلقة */}
         {!menuOpen && (
           <button className="burger-menu" aria-label="فتح القائمة" onClick={handleMenuToggle}>
             <span className="burger-bar"></span>
@@ -30,15 +39,16 @@ function Header() {
           </button>
         )}
       </div>
-      {/* القائمة الجانبية للهامبرقر منيو */}
-      <div className={`mobile-menu-overlay${menuOpen ? ' open' : ''}`} onClick={handleCloseMenu}></div>
-      <nav className={`mobile-menu${menuOpen ? ' open' : ''}`}>
-        <button className="close-menu" onClick={handleCloseMenu}>&times;</button>
-        {/* لا توجد روابط */}
-      </nav>
+
+      {menuOpen && <div className="mobile-menu-overlay open" onClick={handleCloseMenu}></div>}
+      {menuOpen && (
+        <nav className="mobile-menu open">
+          <button className="close-menu" onClick={handleCloseMenu}>&times;</button>
+          {/* يمكنك إضافة روابط هنا لاحقًا */}
+        </nav>
+      )}
     </header>
   );
 }
 
 export default Header;
-

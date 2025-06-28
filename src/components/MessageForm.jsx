@@ -6,6 +6,7 @@ function MessageForm() {
   const [popupOpen, setPopupOpen] = useState(false);
   const [placeholderText, setPlaceholderText] = useState('اكتب محتوى رسالتك هنا..');
   const [isTyping, setIsTyping] = useState(false);
+  const [fly, setFly] = useState(false); // حالة طيران الحمامة
 
   const typingTexts = ['إمدح ..', 'عاتب..', 'إنصح..', 'طقطق ..', 'بس لاتجيب العيد'];
   let typingIndex = 0;
@@ -15,28 +16,21 @@ function MessageForm() {
       setIsTyping(true);
       let charIndex = 0;
       const interval = setInterval(() => {
-        setPlaceholderText((prev) => typingTexts[typingIndex].slice(0, charIndex));
+        setPlaceholderText(() => typingTexts[typingIndex].slice(0, charIndex));
         charIndex++;
         if (charIndex > typingTexts[typingIndex].length) {
           clearInterval(interval);
           setTimeout(() => {
             typingIndex = (typingIndex + 1) % typingTexts.length;
             typeEffect();
-          }, 500); // تقليل وقت الانتظار بين النصوص
+          }, 500);
         }
-      }, 100); // تقليل وقت الكتابة لكل حرف
+      }, 95);
     };
 
     typeEffect();
-
     return () => clearInterval();
   }, []);
-
-  // تشغيل أول ثانية واحدة فقط من صوت الحمامة
-  const playDoveSound = () => {
-    const audio = new Audio('/assets/dove-sound.mp3');
-    audio.play();
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,10 +38,15 @@ function MessageForm() {
   };
 
   const handleClosePopup = () => setPopupOpen(false);
-  const handleConfirmSend = () => {
+
+  const handleConfirmSend = (confirmed) => {
+    if (!confirmed) return;
     setPopupOpen(false);
-    playDoveSound();
-    // هنا يمكنك تنفيذ منطق الإرسال الفعلي لاحقاً
+    setFly(true);
+    const audio = new Audio('/assets/dove-sound.mp3');
+    audio.play();
+    audio.onended = () => setFly(false);
+    // يمكنك تنفيذ منطق الإرسال هنا لاحقًا
   };
 
   return (
@@ -62,7 +61,7 @@ function MessageForm() {
           maxLength={500}
           required
           dir="rtl"
-          style={{textAlign: 'right'}}
+          style={{ textAlign: 'right' }}
           onFocus={() => setIsTyping(false)}
         ></textarea>
 
@@ -75,15 +74,37 @@ function MessageForm() {
           pattern="05[0-9]{8}"
           required
           dir="rtl"
-          style={{textAlign: 'right'}}
+          style={{ textAlign: 'right' }}
         />
 
-        <button type="submit" className="form-submit">
-          ارسل حمامتك بـ 99 هلله
-        </button>
-        <div className="form-note">يشمل ضريبة القيمة المضافة</div>
+        <button type="submit" className="form-submit">ارسل حمامتك بـ 99 هلله</button>
+        <div className="form-note">مجانًا للرسالة الأولى</div>
       </form>
-      <SendWarningPopup open={popupOpen} onClose={handleClosePopup} onConfirm={handleConfirmSend} />
+
+      <SendWarningPopup
+        open={popupOpen}
+        onClose={handleClosePopup}
+        onConfirm={handleConfirmSend}
+      />
+
+      {/* ✅ أيقونة الحمامة بعد الإرسال */}
+      {fly && (
+        <img
+          src="/assets/logo-icon-white.svg"
+          alt="حمامة تطير"
+          className="flying-dove-popup show"
+          style={{
+            position: 'fixed',
+            top: '40%',
+            left: '50%',
+            transform: 'translate(-50%, 0)',
+            width: 64,
+            height: 64,
+            pointerEvents: 'none',
+            zIndex: 1002,
+          }}
+        />
+      )}
     </section>
   );
 }

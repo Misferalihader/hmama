@@ -245,3 +245,42 @@
   outline: none;
   box-shadow: none;
 }
+
+
+
+.flying-dove-popup {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  transform-origin: center;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 56px;
+  height: 56px;
+  pointer-events: none;
+  z-index: 1002;
+}
+
+.flying-dove-popup.show {
+  opacity: 1;
+  animation: doveFlyPopup 1.5s cubic-bezier(0.4,1,0.7,1);
+}
+
+@keyframes doveFlyPopup {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0) scale(1) rotate(0deg);
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+    transform: translate(-50%, -120px) scale(1.2) rotate(-18deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -180px) scale(1.3) rotate(-24deg);
+  }
+}
